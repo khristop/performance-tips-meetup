@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Task } from '../../task.service';
+import { Task } from '../task.service';
 
 @Component({
   selector: 'app-item-details',

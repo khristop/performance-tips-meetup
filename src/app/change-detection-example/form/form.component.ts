@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TaskService } from '../../task.service';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-form',

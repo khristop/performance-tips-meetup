@@ -4,7 +4,7 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { Component } from "@angular/core";
-import { Board, Task, TaskService } from "../../task.service";
+import { Board, Task, TaskService } from "../task.service";
 
 @Component({
   selector: "app-boards",
