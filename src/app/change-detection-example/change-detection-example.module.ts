@@ -18,13 +18,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { CallbackPipe } from './callback.pipe';
 import { TaskListComponent } from './components/task-list/task-list.component';
-import { TasksComponent } from './components/tasks/tasks.component';
+import { BoardsComponent } from './components/boards/boards.component';
+import { TaskService } from './task.service';
 
 
 @NgModule({
-  declarations: [TodoComponent, FormComponent, CallbackPipe, TaskListComponent, TasksComponent],
+  declarations: [TodoComponent, FormComponent, TaskListComponent, BoardsComponent],
   imports: [
     CommonModule,
     ChangeDetectionExampleRoutingModule,
@@ -42,6 +42,9 @@ import { TasksComponent } from './components/tasks/tasks.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
+  ],
+  providers: [
+    TaskService
   ]
 })
 export class ChangeDetectionExampleModule { }

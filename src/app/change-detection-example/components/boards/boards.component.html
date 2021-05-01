@@ -1,0 +1,6 @@
+<section cdkDropListGroup>
+  <header class="mat-h1">Boards</header>
+  <div class="boards-wrapper">
+    <app-task-list *ngFor="let board of taskBoards" [title]="board.title" [items]="filterTasks(taskService.tasks, board.statusFilter)"></app-task-list>
+  </div>
+</section>
