@@ -116,4 +116,22 @@ export class TaskService {
       []
     );
   }
+
+  addTasks(quantity: number) {
+    const maxId = this.getAllTasks(this.boards).reduce((last, task)=> task.id > last ? task.id: last ,0);
+
+    const newTasks: Task[] = Array.from(Array(quantity).keys())
+      .map((index) => ({
+        id: index + maxId + 1,
+        title: `Task ${index + maxId + 1}`,
+        description: 'auto generated',
+        priority: "normal",
+        status: "progress"
+      }));
+
+      this.boards[0].tasks = [
+        ...this.boards[0].tasks,
+        ...newTasks
+      ];
+  }
 }

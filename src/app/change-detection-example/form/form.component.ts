@@ -44,4 +44,8 @@ export class FormComponent implements OnInit {
     console.info("%cForm component - Change Detection", "color:green");
     return true;
   }
+
+  addMassiveTasks(quantity: number) {
+    this.tasksService.addTasks(quantity);
+  }
 }
