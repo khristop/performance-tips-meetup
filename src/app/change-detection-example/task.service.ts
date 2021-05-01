@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
-import { delay, take } from "rxjs/operators";
+import { BehaviorSubject, Observable, of } from "rxjs";
+import { take } from "rxjs/operators";
 
 export type Priority = "low" | "normal" | "high";
 export type TaskStatus = "progress" | "done";
@@ -94,12 +94,16 @@ export class TaskService {
     },
   ];
 
+  protected boardsSubject$ = new BehaviorSubject<Board[]>(this.boards);
+  boards$ = this.boardsSubject$.asObservable();
+
   add(newTask: Task) {
     const newBoards = [...this.boards];
     const { tasks } = newBoards[0];
-    newTask.id = tasks[tasks.length].id + 1;
+    newTask.id = tasks[tasks.length - 1].id + 1;
     tasks.push(newTask);
     this.boards = newBoards;
+    this.boardsSubject$.next(newBoards);
   }
 
   search(searchHint: string): Observable<Task[]> {
@@ -133,5 +137,6 @@ export class TaskService {
         ...this.boards[0].tasks,
         ...newTasks
       ];
+      this.boardsSubject$.next([...this.boards]);
   }
 }

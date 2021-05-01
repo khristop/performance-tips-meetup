@@ -3,24 +3,32 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { Observable, Subscription } from "rxjs";
 import { Board, Task, TaskService } from "../task.service";
 
 @Component({
   selector: "app-boards",
   templateUrl: "./boards.component.html",
-  styleUrls: ["./boards.component.scss"],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ["./boards.component.scss"]
 })
-export class BoardsComponent {
+export class BoardsComponent implements OnInit {
 
   get tasksCount() {
     console.log('TasksCount getter called');
     return this.countTasks(this.taskService.boards);
   }
 
+  boards: Board[] = [];
+  boards$: Observable<Board[]>;
+  boardsSubscription: Subscription;
+
   constructor(public taskService: TaskService) {
     console.log("%cBoards component created", "color:blue");
+  }
+
+  ngOnInit() {
+    this.boards = this.taskService.boards;
   }
 
   drop(event: CdkDragDrop<Task[]>) {

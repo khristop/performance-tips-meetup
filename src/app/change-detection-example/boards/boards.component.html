@@ -6,7 +6,7 @@
       <div class="mat-h2">total tasks: {{ getTaskCount() }}</div>
       <div class="boards-wrapper">
         <app-task-list
-          *ngFor="let board of taskService.boards"
+          *ngFor="let board of boards"
           [title]="board.title"
           [items]="board.tasks"
           (dropItem)="drop($event)"
