@@ -1,11 +1,10 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
-import { Component, OnInit } from "@angular/core";
-import { Task, TaskService, TaskStatus } from "../../task.service";
-
-export interface TaskBoard {
-  title: string;
-  statusFilter: TaskStatus;
-}
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from "@angular/cdk/drag-drop";
+import { Component } from "@angular/core";
+import { Board, Task, TaskService } from "../../task.service";
 
 @Component({
   selector: "app-boards",
@@ -14,23 +13,46 @@ export interface TaskBoard {
 })
 export class BoardsComponent {
 
+  get tasksCount() {
+    console.log('TasksCount getter called');
+    return this.countTasks(this.taskService.boards);
+  }
+
   constructor(public taskService: TaskService) {
     console.log("%cBoards component created", "color:blue");
   }
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     } else {
-      transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex);
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
   }
 
   changeDetectionCalled() {
-    console.info('Dashboard - Change Detection');
-    return 'testing only'
+    console.info("Dashboard - Change Detection");
+    return "testing only";
+  }
+
+  getTaskCount() {
+    console.log('getTasksCount called');
+    return this.countTasks(this.taskService.boards);
+  }
+
+  countTasks(boards: Board[]) {
+    return boards.reduce(
+      (acc, board) => board.tasks.length + acc,
+      0
+    );
   }
 }

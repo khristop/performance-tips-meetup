@@ -1,5 +1,7 @@
 <section cdkDropListGroup>
   <header class="mat-h1">Boards</header>
+  <div class="mat-h2">total tasks: {{ tasksCount }}</div>
+
   <div class="boards-wrapper">
     <app-task-list
       *ngFor="let board of taskService.boards"
