@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TaskService } from '../task.service';
+import { Task, TaskService } from '../task.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
   addressForm = this.fb.group({
     title: [null, Validators.required],
     description: null,
@@ -15,8 +16,24 @@ export class FormComponent {
     status: ['progress'],
   });
 
+  previewTask: Task = {
+    title: '',
+    description: '',
+    priority: 'normal',
+    status: 'progress'
+  };
+
   constructor(private fb: FormBuilder, private tasksService: TaskService) {
     console.log("%cForm component created", "color:blue");
+  }
+
+  ngOnInit() {
+    this.addressForm.valueChanges.subscribe(({title, description, priority, status}) => {
+      this.previewTask.title = title;
+      this.previewTask.description = description;
+      this.previewTask.priority = priority;
+      this.previewTask.status = status;
+    });
   }
 
   onSubmit() {
@@ -24,7 +41,7 @@ export class FormComponent {
   }
 
   changeDetectionCalled() {
-    console.log('Form module - Change Detection');
-    return 'testing only'
+    console.info("%cForm component - Change Detection", "color:green");
+    return true;
   }
 }

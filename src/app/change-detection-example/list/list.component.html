@@ -1,0 +1,12 @@
+<section class="filter-container">
+  <mat-form-field class="search-filter">
+    <input matInput #search
+          (keyup)="searchTask($event.target['value'])"
+          placeholder="Search description">
+  </mat-form-field>
+</section>
+
+<div class="items">
+  <app-item-details *ngFor="let task of tasks" [item]="task">
+  </app-item-details>
+</div>

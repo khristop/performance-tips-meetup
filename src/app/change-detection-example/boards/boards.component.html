@@ -1,14 +1,21 @@
-<section cdkDropListGroup>
-  <header class="mat-h1">Boards</header>
-  <div class="mat-h2">total tasks: {{ getTaskCount() }}</div>
 
-  <div class="boards-wrapper">
-    <app-task-list
-      *ngFor="let board of taskService.boards"
-      [title]="board.title"
-      [items]="board.tasks"
-      (dropItem)="drop($event)"
-    ></app-task-list>
-  </div>
-  <p>{{ changeDetectionCalled() }}</p>
-</section>
+
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="Boards">
+    <section cdkDropListGroup>
+      <div class="mat-h2">total tasks: {{ getTaskCount() }}</div>
+      <div class="boards-wrapper">
+        <app-task-list
+          *ngFor="let board of taskService.boards"
+          [title]="board.title"
+          [items]="board.tasks"
+          (dropItem)="drop($event)"
+        ></app-task-list>
+      </div>
+      <p>{{ changeDetectionCalled() }}</p>
+    </section>
+  </mat-tab>
+  <mat-tab label="List">
+    <app-list></app-list>
+  </mat-tab>
+</mat-tab-group>

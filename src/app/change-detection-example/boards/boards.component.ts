@@ -3,13 +3,14 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { Board, Task, TaskService } from "../task.service";
 
 @Component({
   selector: "app-boards",
   templateUrl: "./boards.component.html",
   styleUrls: ["./boards.component.scss"],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardsComponent {
 
@@ -40,7 +41,7 @@ export class BoardsComponent {
   }
 
   changeDetectionCalled() {
-    console.info("Dashboard - Change Detection");
+    console.info("%cBoards - Change Detection", "color:green");
     return "testing only";
   }
 

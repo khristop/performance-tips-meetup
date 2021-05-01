@@ -31,7 +31,8 @@
     <mat-card-actions>
       <button mat-raised-button color="primary" type="submit">Add</button>
     </mat-card-actions>
-
-    <p>{{ changeDetectionCalled() }}</p>
+    task preview
+    <app-item-details [item]="previewTask"></app-item-details>
+    <div *ngIf="changeDetectionCalled()"></div>
   </mat-card>
 </form>

@@ -23,6 +23,9 @@ import { BoardsComponent } from "./boards/boards.component";
 import { TaskService } from "./task.service";
 import { ItemDetailsComponent } from "./item-details/item-details.component";
 import { TaskBoardCounterPipe } from "./pipes/task-board-counter.pipe";
+import { MatTabsModule } from '@angular/material/tabs';
+import { ListComponent } from './list/list.component';
+import { CallbackImpurePipe, CallbackPipe } from "./pipes/callback.pipe";
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { TaskBoardCounterPipe } from "./pipes/task-board-counter.pipe";
     TaskListComponent,
     BoardsComponent,
     ItemDetailsComponent,
+    ListComponent,
     TaskBoardCounterPipe,
+    CallbackPipe,
+    CallbackImpurePipe
   ],
   imports: [
     CommonModule,
@@ -50,6 +56,7 @@ import { TaskBoardCounterPipe } from "./pipes/task-board-counter.pipe";
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatTabsModule
   ],
   providers: [TaskService],
 })
