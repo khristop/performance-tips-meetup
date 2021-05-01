@@ -13,9 +13,18 @@ export interface Task {
 
 @Injectable()
 export class TaskService {
-  tasks: Task[] = [];
+  boards = [
+    {
+      title: "TODO",
+      tasks: []
+    },
+    {
+      title: "DONE",
+      tasks: []
+    },
+  ];
 
   add(newTask: Task) {
-    this.tasks.push(newTask);
+    this.boards[0].tasks.push(newTask);
   }
 }

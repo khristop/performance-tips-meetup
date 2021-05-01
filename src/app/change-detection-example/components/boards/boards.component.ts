@@ -1,4 +1,4 @@
-import { CdkDragDrop } from "@angular/cdk/drag-drop";
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Component, OnInit } from "@angular/core";
 import { Task, TaskService, TaskStatus } from "../../task.service";
 
@@ -13,24 +13,17 @@ export interface TaskBoard {
   styleUrls: ["./boards.component.scss"],
 })
 export class BoardsComponent {
-  taskBoards: TaskBoard[] = [
-    {
-      title: "TODO",
-      statusFilter: 'progress',
-    },
-    {
-      title: "DONE",
-      statusFilter: 'done'
-    },
-  ];
-  
+
   constructor(public taskService: TaskService) {}
 
-  drop(event: CdkDragDrop<Task>) {
-    console.log(event);
-  }
-
-  filterTasks(tasks: Task[], status: TaskStatus) {
-    return tasks.filter( task => task.status === status);
+  drop(event: CdkDragDrop<Task[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex);
+    }
   }
 }

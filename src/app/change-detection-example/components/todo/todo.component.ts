@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-todo',
@@ -6,5 +6,4 @@ import { ChangeDetectorRef, Component } from '@angular/core';
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent {
-  constructor(private cdr: ChangeDetectorRef) {}
 }

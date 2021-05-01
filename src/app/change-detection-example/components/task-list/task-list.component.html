@@ -3,7 +3,7 @@
     <mat-card-title>{{title}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div cdkDropList #todoList="cdkDropList" class="list" (cdkDropListDropped)="drop($event)" [cdkDropListData]="items">
+    <div cdkDropList #todoList="cdkDropList" class="list" (cdkDropListDropped)="dropItem.emit($event)" [cdkDropListData]="items">
       <div class="list-item" *ngFor="let item of items" cdkDrag>{{item.title}}</div>
     </div>
   </mat-card-content>
