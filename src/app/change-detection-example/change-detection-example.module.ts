@@ -26,6 +26,7 @@ import { TaskBoardCounterPipe } from "./pipes/task-board-counter.pipe";
 import { MatTabsModule } from '@angular/material/tabs';
 import { ListComponent } from './list/list.component';
 import { CallbackImpurePipe, CallbackPipe } from "./pipes/callback.pipe";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CallbackImpurePipe, CallbackPipe } from "./pipes/callback.pipe";
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTabsModule
+    MatTabsModule,
+    ScrollingModule
   ],
   providers: [TaskService],
 })

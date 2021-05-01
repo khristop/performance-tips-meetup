@@ -6,8 +6,13 @@
   </mat-form-field>
 </section>
 
+<!-- trackBy => trackBy: trackBy -->
 <div class="items">
-  <!-- trackBy => trackBy: trackBy -->
   <app-item-details *ngFor="let item of tasks" [item]="item">
   </app-item-details>
 </div>
+<!-- <cdk-virtual-scroll-viewport itemSize="160" class="items" minBufferPx="500">
+  <app-item-details *cdkVirtualFor="let item of tasks" [item]="item">
+  </app-item-details>
+</cdk-virtual-scroll-viewport> -->
+
