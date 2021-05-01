@@ -1,6 +1,6 @@
 :host {
   display: inline-flex;
-  min-width: 500px;
+  width: 500px;
   margin-right: 2em;
 }
 
@@ -23,20 +23,8 @@
   border-radius: 4px;
   display: block;
   overflow: hidden;
-}
-
-.list-item {
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  box-sizing: border-box;
-  cursor: move;
-  background: white;
-  color: black;
-  font-size: 14px;
-}
-
-.list-item:last-child {
-  border: none;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 /* Highlight the list item that is being dragged. */

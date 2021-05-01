@@ -14,7 +14,9 @@ export interface TaskBoard {
 })
 export class BoardsComponent {
 
-  constructor(public taskService: TaskService) {}
+  constructor(public taskService: TaskService) {
+    console.log("%cBoards component created", "color:blue");
+  }
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -25,5 +27,10 @@ export class BoardsComponent {
           event.previousIndex,
           event.currentIndex);
     }
+  }
+
+  changeDetectionCalled() {
+    console.info('Dashboard - Change Detection');
+    return 'testing only'
   }
 }

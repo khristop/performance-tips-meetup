@@ -21,10 +21,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { BoardsComponent } from './components/boards/boards.component';
 import { TaskService } from './task.service';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
 
 
 @NgModule({
-  declarations: [TodoComponent, FormComponent, TaskListComponent, BoardsComponent],
+  declarations: [TodoComponent, FormComponent, TaskListComponent, BoardsComponent, ItemDetailsComponent],
   imports: [
     CommonModule,
     ChangeDetectionExampleRoutingModule,

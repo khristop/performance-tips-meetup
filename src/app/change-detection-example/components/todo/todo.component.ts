@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent {
+  constructor() {
+    console.log("%cTodo component created", "color:blue");
+  }
+  changeDetectionCalled() {
+    console.log('Form module - Change Detection');
+    return 'testing only'
+  }
 }

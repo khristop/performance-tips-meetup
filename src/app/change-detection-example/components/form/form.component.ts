@@ -15,9 +15,16 @@ export class FormComponent {
     status: ['progress'],
   });
 
-  constructor(private fb: FormBuilder, private tasksService: TaskService) {}
+  constructor(private fb: FormBuilder, private tasksService: TaskService) {
+    console.log("%cForm component created", "color:blue");
+  }
 
   onSubmit() {
     this.tasksService.add(this.addressForm.value)
+  }
+
+  changeDetectionCalled() {
+    console.log('Form module - Change Detection');
+    return 'testing only'
   }
 }

@@ -4,7 +4,8 @@
   </mat-card-header>
   <mat-card-content>
     <div cdkDropList #todoList="cdkDropList" class="list" (cdkDropListDropped)="dropItem.emit($event)" [cdkDropListData]="items">
-      <div class="list-item" *ngFor="let item of items" cdkDrag>{{item.title}}</div>
+      <app-item-details *ngFor="let item of items" cdkDrag [item]="item"></app-item-details>
     </div>
+    <p>{{ changeDetectionCalled() }}</p>
   </mat-card-content>
 </mat-card>
