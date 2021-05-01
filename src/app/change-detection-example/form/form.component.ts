@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
     status: ['progress'],
   });
 
-  previewTask: Task = {
+  previewTask: Partial<Task> = {
     title: '',
     description: '',
     priority: 'normal',

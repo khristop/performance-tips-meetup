@@ -21,4 +21,8 @@ export class ListComponent implements OnInit {
       this.tasks = tasks;
     });
   }
+
+  trackBy(index: number, task: Task): number {
+    return task.id;
+  }
 }
