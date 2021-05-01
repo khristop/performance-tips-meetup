@@ -93,6 +93,8 @@ export class TaskService {
   ];
 
   add(newTask: Task) {
-    this.boards[0].tasks.push(newTask);
+    const newBoards = [...this.boards];
+    newBoards[0].tasks.push(newTask);
+    this.boards = newBoards;
   }
 }
